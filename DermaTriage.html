@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Skin Lesion Triage Assessment</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .radio-card {
+      transition: all 0.2s ease;
+    }
+
+    input:checked + .radio-card {
+      border-color: #0f766e;
+      background-color: #ccfbf1;
+      color: #115e59;
+    }
+
+    .result-appear {
+      animation: appear 0.4s ease-out;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+  <!-- HEADER -->
+  <header class="bg-slate-950 text-white">
+    <div class="mx-auto max-w-5xl px-6 py-12">
+
+      <span class="inline-block rounded-full bg-teal-500/10 px-4 py-2 text-sm text-teal-300">
+        Educational Clinical Triage Tool
+      </span>
+
+      <h1 class="mt-5 text-4xl font-bold md:text-5xl">
+        Skin Lesion Risk Assessment
+      </h1>
+
+      <p class="mt-4 max-w-2xl text-lg text-slate-300">
+        A structured questionnaire designed to identify skin lesion features
+        that may warrant further professional evaluation.
+      </p>
+
+    </div>
+  </header>
+
+
+  <main class="mx-auto max-w-4xl px-5 py-10">
+
+    <!-- FULL CLINICAL DISCLAIMER -->
+    <section class="mb-8 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+
+      <div class="flex gap-4">
+
+        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+          ⚠
+        </div>
+
+        <div>
+          <h2 class="font-semibold text-amber-900">
+            Clinical Disclaimer
+          </h2>
+
+          <p class="mt-2 text-sm leading-6 text-amber-800">
+            This software tool is designed strictly for educational,
+            informational, and preliminary triage support purposes. It does
+            not constitute a formal medical diagnosis, professional clinical
+            advice, or a definitive health assessment. Users should never
+            delay seeking, disregard, or fail to obtain professional medical
+            advice based on information provided by this tool. Always consult
+            a qualified dermatologist or healthcare professional for any skin
+            concerns, evaluations, or medical conditions.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ASSESSMENT -->
+    <section class="rounded-3xl bg-white p-6 shadow-xl md:p-8">
+
+      <h2 class="text-2xl font-bold">
+        Lesion Assessment
+      </h2>
+
+      <p class="mt-2 text-slate-500">
+        Answer all seven questions below.
+      </p>
+
+      <form id="assessmentForm" class="mt-8 space-y-5">
+
+        <!-- QUESTIONS -->
+
+        <div class="rounded-2xl border p-5">
+          <h3 class="font-semibold">1. Has the lesion changed in size?</h3>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <label>
+              <input type="radio" name="size" value="yes" class="peer sr-only" required>
+              <div class="radio-card cursor-pointer rounded-xl border p-3 text-center">Yes</div>
+            </label>
+            <label>
+              <input type="radio" name="size" value="no" class="peer sr-only">
+              <div class="radio-card cursor-pointer rounded-xl border p-3 text-center">No</div>
+            </label>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border p-5">
+          <h3 class="font-semibold">
+            2. Is the outline ragged, blurred, notched, or asymmetrical rather than smooth and round?
+          </h3>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <label><input type="radio" name="shape" value="yes" class="peer sr-only" required><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">Yes</div></label>
+            <label><input type="radio" name="shape" value="no" class="peer sr-only"><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">No</div></label>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border p-5">
+          <h3 class="font-semibold">
+            3. Does the mole have multiple shades, patchy distribution, or uneven pigmentation?
+          </h3>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <label><input type="radio" name="color" value="yes" class="peer sr-only" required><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">Yes</div></label>
+            <label><input type="radio" name="color" value="no" class="peer sr-only"><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">No</div></label>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border p-5">
+          <h3 class="font-semibold">
+            4. Is the largest diameter of the lesion 7 mm or greater?
+          </h3>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <label><input type="radio" name="diameter" value="yes" class="peer sr-only" required><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">Yes</div></label>
+            <label><input type="radio" name="diameter" value="no" class="peer sr-only"><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">No</div></label>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border p-5">
+          <h3 class="font-semibold">
+            5. Is there a red border or swelling surrounding the lesion?
+          </h3>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <label><input type="radio" name="inflammation" value="yes" class="peer sr-only" required><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">Yes</div></label>
+            <label><input type="radio" name="inflammation" value="no" class="peer sr-only"><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">No</div></label>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border p-5">
+          <h3 class="font-semibold">
+            6. Has the lesion bled, oozed, or formed a crust/scab?
+          </h3>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <label><input type="radio" name="oozing" value="yes" class="peer sr-only" required><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">Yes</div></label>
+            <label><input type="radio" name="oozing" value="no" class="peer sr-only"><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">No</div></label>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border p-5">
+          <h3 class="font-semibold">
+            7. Is there new or persistent itching, tingling, or tenderness?
+          </h3>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <label><input type="radio" name="sensation" value="yes" class="peer sr-only" required><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">Yes</div></label>
+            <label><input type="radio" name="sensation" value="no" class="peer sr-only"><div class="radio-card cursor-pointer rounded-xl border p-3 text-center">No</div></label>
+          </div>
+        </div>
+
+
+        <button type="submit"
+          class="w-full rounded-2xl bg-teal-700 py-4 font-bold text-white hover:bg-teal-800">
+          Calculate Risk Score
+        </button>
+
+      </form>
+    </section>
+
+
+    <!-- RESULTS -->
+    <section id="result" class="result-appear mt-8 hidden rounded-3xl bg-white shadow-xl">
+
+      <div id="resultHeader" class="p-8">
+
+        <div class="flex justify-between">
+
+          <div>
+            <p class="text-sm text-slate-500">Assessment Result</p>
+            <h2 id="riskLevel" class="mt-2 text-3xl font-bold"></h2>
+          </div>
+
+          <div class="text-right">
+            <div id="score" class="text-4xl font-bold">0</div>
+            <span class="text-sm text-slate-500">/ 10 points</span>
+          </div>
+
+        </div>
+
+        <div class="mt-6 rounded-2xl bg-slate-50 p-5">
+
+          <p class="text-xs font-bold text-slate-500">
+            RECOMMENDATION
+          </p>
+
+          <p id="recommendation" class="mt-2"></p>
+
+        </div>
+
+      </div>
+
+
+      <!-- DISCLAIMER AGAIN -->
+      <div class="border-t bg-amber-50 p-6">
+
+        <h3 class="font-semibold text-amber-900">
+          Clinical Disclaimer
+        </h3>
+
+        <p class="mt-2 text-sm leading-6 text-amber-800">
+          This software tool is designed strictly for educational,
+          informational, and preliminary triage support purposes. It does not
+          constitute a formal medical diagnosis, professional clinical advice,
+          or a definitive health assessment. Users should never delay seeking,
+          disregard, or fail to obtain professional medical advice based on
+          information provided by this tool. Always consult a qualified
+          dermatologist or healthcare professional for any skin concerns,
+          evaluations, or medical conditions.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    const form = document.getElementById("assessmentForm");
+    const result = document.getElementById("result");
+    const riskLevel = document.getElementById("riskLevel");
+    const recommendation = document.getElementById("recommendation");
+    const scoreElement = document.getElementById("score");
+
+    const scoring = {
+      size: 2,
+      shape: 2,
+      color: 2,
+      diameter: 1,
+      inflammation: 1,
+      oozing: 1,
+      sensation: 1
+    };
+
+    form.addEventListener("submit", function(e) {
+
+      e.preventDefault();
+
+      let points = 0;
+
+      for (const key in scoring) {
+
+        const selected = document.querySelector(
+          `input[name="${key}"]:checked`
+        );
+
+        if (selected && selected.value === "yes") {
+          points += scoring[key];
+        }
+      }
+
+      scoreElement.textContent = points;
+
+      if (points >= 3) {
+
+        riskLevel.textContent =
+          "Moderate to High Priority";
+
+        riskLevel.className =
+          "mt-2 text-3xl font-bold text-red-700";
+
+        recommendation.textContent =
+          "We strongly recommend prompt formal evaluation by a healthcare professional or dermatologist.";
+
+      } else {
+
+        riskLevel.textContent =
+          "Low Risk";
+
+        riskLevel.className =
+          "mt-2 text-3xl font-bold text-emerald-700";
+
+        recommendation.textContent =
+          "Routine self-monitoring, sun protection, and general observation. Watch for any future changes.";
+      }
+
+      result.classList.remove("hidden");
+
+      setTimeout(() => {
+        result.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }, 100);
+
+    });
+
+  </script>
+
+</body>
+</html>
